@@ -1,19 +1,37 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
-group = 'org.example'
+group = 'com.imdb.tests'
 version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.testng:testng:7.8.0'
+    implementation 'com.codeborne:selenide:7.0.4'
+    implementation 'io.qameta.allure:allure-testng:2.24.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+allure {
+    version = '2.24.0'
 }
