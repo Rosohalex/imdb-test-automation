@@ -2,10 +2,13 @@ package com.imdb.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.imdb.pages.ActorPage;
 import com.imdb.pages.HomePage;
 import com.imdb.pages.FilmPage;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
+import io.qameta.allure.selenide.LogType;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
@@ -18,6 +21,12 @@ public class ImdbSearchTests {
     @BeforeClass
     @Step("BeforeTest: Setup test configuration")
     public void setUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+                .enableLogs(LogType.BROWSER, java.util.logging.Level.ALL)
+        );
+
         Configuration.browser = "chrome";
         Configuration.timeout = 5000;
 
