@@ -34,10 +34,10 @@ cd imdb-test-automation
 
 ## Test Scenario
 1. Open imdb.com
-2. Search for "QA"
-3. Save the first title from dropdown
-4. Click on first result
-5. Verify page title matches saved title
-6. Verify more than 3 cast members
-7. Click on 3rd cast member
-8. Verify correct profile opened
+2. Search for "QA" with the search bar
+3. When dropdown opens, save the name of the first title
+4. Click on the first title
+5. Verify that page title matches the one saved from the dropdown
+6. Verify there are more than 3 members in the "top cast section"
+7. Click on the 3rd profile in the "top cast section"
+8. Verify that correct profile have opened
