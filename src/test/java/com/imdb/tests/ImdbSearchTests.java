@@ -34,7 +34,6 @@ public class ImdbSearchTests {
 
         FilmPage filmPage = homePage.clickFirstResult();
         String actualPageTitle = filmPage.getTitle();
-
         Allure.step("Verify Film title is the same as clicked search result title", () ->
             assertEquals(actualPageTitle, firstSearchResultTitle, "Page title should match the saved title from dropdown.")
         );
