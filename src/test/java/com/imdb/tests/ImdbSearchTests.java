@@ -37,17 +37,24 @@ public class ImdbSearchTests {
 
         FilmPage filmPage = homePage.clickFirstResult();
         String actualPageTitle = filmPage.getTitle();
-        assertEquals(actualPageTitle, firstSearchResultTitle, "Page title should match the saved title from dropdown.");
+
+        Allure.step("Verify Film title is the same as clicked search result title", () ->
+            assertEquals(actualPageTitle, firstSearchResultTitle, "Page title should match the saved title from dropdown.")
+        );
 
         int topCastMembersCount = filmPage.getTopCastMembersCount();
-        assertTrue(topCastMembersCount > 3,
-                "Top cast should have more than 3 members. Actual count: " + topCastMembersCount);
+        Allure.step("Verify Film has more than 3 top cast members", () ->
+            assertTrue(topCastMembersCount > 3,
+                "Top cast should have more than 3 members. Actual count: " + topCastMembersCount)
+        );
 
         String thirdCastMemberName = filmPage.getCastMemberName(3);
         ActorPage actorPage = filmPage.clickCastMemberName(3);
         String actualActorName = actorPage.getActorName();
-        assertEquals(actualActorName, thirdCastMemberName,
-                "Actor profile name should match the clicked cast member name");
+        Allure.step("Verify actor name is the same as just clicked top cast member name", () ->
+            assertEquals(actualActorName, thirdCastMemberName,
+                    "Actor profile name should match the clicked cast member name")
+        );
     }
 
     @AfterClass

@@ -16,18 +16,18 @@ public class FilmPage {
         return title.getText();
     }
 
-    @Step("Get top cast members count")
+    @Step("Get Film's top cast members count")
     public int getTopCastMembersCount() {
         topCastMembers.first().scrollIntoView(true);
         return topCastMembers.size();
     }
 
-    @Step("Get cast member name at position {position}")
+    @Step("Get Film's cast member name at position {position}")
     public String getCastMemberName(int position) {
         return getTopCastMemberName(position).getText();
     }
 
-    @Step("Click on cast member name at position {position}")
+    @Step("Click on  Film's cast member name at position {position}")
     public ActorPage clickCastMemberName(int position) {
         getTopCastMemberName(position).click();
         return new ActorPage();

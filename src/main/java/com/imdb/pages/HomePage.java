@@ -27,7 +27,7 @@ public class HomePage {
         return this;
     }
 
-    @Step("Search for '{query}'")
+    @Step("Search for '{query}' in the search bar")
     public HomePage search(String query) {
         searchInput.setValue(query);
         return this;
@@ -35,12 +35,16 @@ public class HomePage {
 
     @Step("Get first result title from search dropdown")
     public String getFirstResultTitle() {
-        return dropdownSearchResults.first().$(".searchResult__constTitle").getText();
+        return getDropdownFirstSearchResult().$(".searchResult__constTitle").getText();
     }
 
     @Step("Click on first result from search dropdown")
     public FilmPage clickFirstResult() {
-        dropdownSearchResults.first().click();
+        getDropdownFirstSearchResult().click();
         return new FilmPage();
+    }
+
+    private SelenideElement getDropdownFirstSearchResult(){
+        return dropdownSearchResults.first();
     }
 }
