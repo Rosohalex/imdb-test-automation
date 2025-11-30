@@ -18,8 +18,8 @@ public class TestListener implements ITestListener {
         String testName = result.getName();
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
 
-        System.out.println("❌ Test failed: " + testName);
-        System.out.println("📸 Taking screenshot...");
+        System.out.println("Test failed: " + testName);
+        System.out.println("Taking screenshot...");
 
         try {
             byte[] screenshot = Selenide.screenshot(OutputType.BYTES);
@@ -35,29 +35,29 @@ public class TestListener implements ITestListener {
                     String pageSource = WebDriverRunner.getWebDriver().getPageSource();
                     Allure.addAttachment("Page Source", "text/html", pageSource, ".html");
 
-                    System.out.println("✅ Page Source attached to Allure report");
+                    System.out.println("Page Source attached to Allure report");
                 }
 
-                System.out.println("✅ Screenshot attached to Allure report");
+                System.out.println("Screenshot attached to Allure report");
             }
         } catch (Exception e) {
-            System.err.println("⚠️ Failed to take screenshot: " + e.getMessage());
+            System.err.println("Failed to take screenshot: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("✅ Test passed: " + result.getName());
+        System.out.println("Test passed: " + result.getName());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("⏭️ Test skipped: " + result.getName());
+        System.out.println("Test skipped: " + result.getName());
     }
 
     @Override
     public void onTestStart(ITestResult result) {
-        System.out.println("▶️ Test started: " + result.getName());
+        System.out.println("Test started: " + result.getName());
     }
 }
