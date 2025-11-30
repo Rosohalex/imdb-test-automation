@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
-@Feature("Search and Cast Verification")
+@Feature("Imbd Search and Cast Verification")
 public class ImdbSearchTests {
 
     private HomePage homePage;
@@ -25,7 +25,7 @@ public class ImdbSearchTests {
     }
 
     @Test
-    @Description("IMBD search, navigation and title verifications test ")
+    @Description("Imbd search, navigation and title verifications test ")
     @Severity(SeverityLevel.NORMAL)
     public void searchNavigateAndCheckTitlesTest() {
         homePage.open()
